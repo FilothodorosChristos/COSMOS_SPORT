@@ -699,13 +699,15 @@ export default function CosmosTalentSprint() {
             </p>
           </div>
 
-          <div className="rounded-2xl bg-white p-5 text-black shadow-lg">
-            <div className="text-sm text-slate-500">Current Assessment</div>
-            <div className="text-2xl font-black">{position.title}</div>
-            <div className="mt-2 text-sm text-slate-500">
-              20 Questions • 8 Minutes
+          {stage === "results" && (
+            <div className="rounded-2xl bg-white p-5 text-black shadow-lg">
+              <div className="text-sm text-slate-500">Current Assessment</div>
+              <div className="text-2xl font-black">{position.title}</div>
+              <div className="mt-2 text-sm text-slate-500">
+                20 Questions • 8 Minutes
+              </div>
             </div>
-          </div>
+)}
         </div>
       </motion.div>
 
@@ -818,47 +820,8 @@ export default function CosmosTalentSprint() {
       )}
 
       {stage === "assessment" && (
-        <div className="grid gap-6 lg:grid-cols-4">
-          <Card className="rounded-3xl shadow-sm lg:col-span-1">
-            <CardContent className="space-y-5 p-6">
-              <div>
-                <div className="text-sm text-slate-500">Υποψήφιος</div>
-                <div className="font-bold">{candidate.fullName}</div>
-                <div className="text-sm text-slate-500">{candidate.email}</div>
-                <div className="text-sm text-slate-500">{candidate.phone}</div>
-              </div>
-
-              <div>
-                <div className="text-sm text-slate-500">Θέση</div>
-                <div className="font-bold">{position.title}</div>
-              </div>
-
-              <div className="rounded-2xl bg-black p-5 text-white">
-                <div className="mb-2 flex items-center gap-2 text-sm text-slate-300">
-                  <Clock size={16} /> Χρόνος
-                </div>
-                <div className="text-4xl font-black">{formatTime(timeLeft)}</div>
-              </div>
-
-              <div>
-                <div className="mb-2 flex justify-between text-sm font-semibold">
-                  <span>Πρόοδος</span>
-                  <span>{result.completion}%</span>
-                </div>
-                <Progress value={result.completion} />
-              </div>
-
-              <Button
-                variant="outline"
-                onClick={() => setStage("profile")}
-                className="w-full"
-              >
-                Πίσω στο προφίλ
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card className="rounded-3xl shadow-sm lg:col-span-3">
+        <div className="mx-auto max-w-4xl">
+          <Card className="rounded-3xl shadow-sm">
             <CardContent className="space-y-6 p-6">
               <div className="flex flex-col justify-between gap-3 md:flex-row md:items-center">
                 <div>
